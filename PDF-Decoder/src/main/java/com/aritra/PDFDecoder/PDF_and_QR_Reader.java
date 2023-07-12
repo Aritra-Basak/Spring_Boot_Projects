@@ -17,20 +17,16 @@ public class PDF_and_QR_Reader {
 	{
 		//PDf content reading starts
 //		 Loading an existing document
-	      File file = new File("C:\\Projects\\Trade3rdFloor.pdf");
+	      File file = new File("<Your PDF File location or complete path>");
 	      PDDocument document = PDDocument.load(file);
 	      //Instantiate PDFTextStripper class
 	      PDFTextStripper pdfStripper = new PDFTextStripper();
 	      //Retrieving text from PDF document
 	      String text = pdfStripper.getText(document);
 	      System.out.println("All the content from the given PDF:-\n"+text);
-	      int pos=text.lastIndexOf("|");
-	      System.out.println("End Date: "+text.substring(pos+1, pos+11));
-	      //Closing the document
-	      document.close();
 	      
 //QR Decoding Starts
-	      File file2 = new File("C:\\Projects\\Trade3rdFloor.pdf");
+	      File file2 = new File("<Your PDF File location or complete path which have the QR Code>");
 	      PDDocument document2 = PDDocument.load(file);
 	        // (1) Parse PDF document
 	        document2 = PDDocument.load(file2);
