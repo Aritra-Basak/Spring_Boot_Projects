@@ -1,5 +1,8 @@
 package com.aritra.PDFDecoder;
 import java.util.*;
+
+import javax.imageio.ImageIO;
+
 import java.io.File;
 import java.io.IOException;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -17,17 +20,21 @@ public class PDF_and_QR_Reader {
 	{
 		//PDf content reading starts
 //		 Loading an existing document
-	      File file = new File("<Your PDF File location or complete path>");
+		File file = new File("C:\\Projects\\Trade3rdFloor.pdf");
 	      PDDocument document = PDDocument.load(file);
 	      //Instantiate PDFTextStripper class
 	      PDFTextStripper pdfStripper = new PDFTextStripper();
 	      //Retrieving text from PDF document
 	      String text = pdfStripper.getText(document);
 	      System.out.println("All the content from the given PDF:-\n"+text);
+	      int pos=text.lastIndexOf("|");
+	      System.out.println("End Date: "+text.substring(pos+1, pos+11));
+	      //Closing the document
+	      document.close();
 	      
 //QR Decoding Starts
-	      File file2 = new File("<Your PDF File location or complete path which have the QR Code>");
-	      PDDocument document2 = PDDocument.load(file);
+	      File file2 = new File("C:\\Projects\\Trade3rdFloor.pdf");
+	      PDDocument document2 = PDDocument.load(file2);
 	        // (1) Parse PDF document
 	        document2 = PDDocument.load(file2);
 
@@ -39,14 +46,19 @@ public class PDF_and_QR_Reader {
 	        for (Result result : results) {      
 	          System.out.println("PDF QR DECODED: "+result.getText()); // That's all.        
 	        }
+	        document2.close();
+	        
+//QR Decoded from image	        
+	        String fileUrl = "C:\\Projects\\testingAddhar.jpeg";
 
-	        // Oh, god...
-	        if (document != null) {
-	          try {
-	            document.close();
-	          } catch (IOException e) {
-	          }
-	        }
+			File file3 = new File(fileUrl);
+
+			try {
+				Result result = QRDecoder.decodeBufferedImage(ImageIO.read(file3));
+				System.out.println(result);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	}
 
 }
