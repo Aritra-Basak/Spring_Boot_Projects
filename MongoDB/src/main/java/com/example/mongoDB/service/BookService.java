@@ -71,7 +71,7 @@ public class BookService {
 				return sr;
 		    }
 		    
-		    sr.setResMessage("Successfully Found Your Book into the library");
+		     sr.setResMessage("Successfully Found Your Books/Book from the library");
 			sr.setResObject(books);
 			sr.setStatus(HttpStatus.OK);
 		    return sr;
