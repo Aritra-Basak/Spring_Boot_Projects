@@ -24,7 +24,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoIterable;
 
 /**
- * @author ChandanSarkar
+ * @author Aritra Basak
  *
  */
 @RestController
