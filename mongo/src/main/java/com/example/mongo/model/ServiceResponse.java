@@ -6,7 +6,7 @@ package com.example.mongo.model;
 import lombok.Data;
 
 /**
- * @author ChandanSarkar
+ * @author Aritra Basak
  *
  */
 @Data
